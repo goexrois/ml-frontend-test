@@ -1,0 +1,1 @@
+{"nfs":{"application":{"id":"application","type":"nfs","guestpath":"/vagrant","hostpath":"/Users/goexrois/Personal/tools/ubuntu-ml","disabled":false,"__vagrantfile":true,"map_uid":502,"map_gid":20,"nfs_udp":true,"nfs_version":3,"uuid":"4264456014"}}}
