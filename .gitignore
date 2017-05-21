@@ -1,0 +1,5 @@
+.vagrant
+.vagrant/*
+ml-app/node_modules
+ml-app/node_modules/*
+*.swp 

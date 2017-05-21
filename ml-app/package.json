@@ -1,0 +1,31 @@
+{
+  "name": "ml-app",
+  "version": "0.0.1",
+  "description": "nodejs app for MercadoLibre frontend test. It must accomplish requirements specified in Front-End Test Práctico.pdf.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goexrois/ml-frontend-test.git"
+  },
+  "author": "Gonzalo Exequiel Rodriguez Isleño",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goexrois/ml-frontend-test/issues"
+  },
+  "homepage": "https://github.com/goexrois/ml-frontend-test#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "handlebars": "^4.0.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
