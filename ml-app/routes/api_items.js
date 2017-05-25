@@ -5,19 +5,19 @@ var getItems = require('../middleware/get_data')
 const itemsQueryPath = 'https://api.mercadolibre.com/sites/MLA/search?q='
 
 const queryOptions = {
-	data : {},
 	queryPath: itemsQueryPath,
 	limit: 4,
 	callback(req){
 		return itemsQueryPath+req.query.q+'&limit='+this.limit
 	},	
 	prepareData(obj){
+		const CATEGORIES_INDEX = 0 
 		let foundItems = { 
 			author: { 
-				name: 'Gonzalo', 
+				name: 'Gonzalo Exequiel', 
 				lastname:"Rodriguez Isleño"
 			},
-			categories: [],
+			categories: obj.available_filters[CATEGORIES_INDEX].values,
 			items: []
 		}
 		
@@ -35,15 +35,20 @@ const queryOptions = {
 				condition: currentValue.condition, 
 				free_shipping: currentValue.shipping.free_shipping
 			}
-		});
+		})
 		return foundItems
 	}
 }
 
-router.use('/',getItems(queryOptions))
-
-router.get('/', function(req,res,next){
-	res.send(queryOptions.data)
+router.get('/', (req,res,next) => {
+		console.log('req en /api/items')
+		console.log('route: ' + JSON.stringify(req.route)) 
+		console.log('params: ' + JSON.stringify(req.params)) 
+		console.log('query: ' + JSON.stringify(req.query)) 
+		console.log('body: ' + JSON.stringify(req.body))	
+		console.log('options: ' + JSON.stringify(queryOptions))
+		console.log(res.locals.data)
+		next()
 })
 
 module.exports = router

@@ -1,0 +1,41 @@
+@import "../base";
+
+.breadcrumbs{
+	width: 100%; 
+	height: auto;
+}
+
+.breadcrumbs__list{
+	list-style: none;	
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumbs__elem{
+	display:inline-block;
+}
+
+.breadcrumbs__link{
+	text-decoration: none;
+}
+
+.breadcrumbs__name{
+	font-family: $default-font-stack; 
+	font-size: 14px;
+	color: $grey;
+}
+
+.breadcrumbs__elem:not(:last-child) .breadcrumbs__name:after{
+	content:">";
+	display:inline-block;
+	padding: 0 7.5px;
+	position: relative; 
+	top: 1px;
+	font-size: 14px;
+	color: $grey; 
+}
+
+.breadcrumbs__elem:last-child .breadcrumbs__name{
+	color: $darkGrey;
+	font-weight: bold;
+}

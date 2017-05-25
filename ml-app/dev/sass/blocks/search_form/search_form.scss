@@ -1,0 +1,38 @@
+@import '../base';
+
+.search-form {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-contents: flex-start;
+	align-items: flex-start;
+}
+
+.search-form__input {
+	display: inline-block;
+	width: 820px;
+	height: 36px;
+	padding: 0 0 0 24px;
+	border: 0;
+	border-radius: 4px 0 0 4px; 
+	font-size: 18px;
+	font-weight: 100;
+}
+
+.search-form__submit-button {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	padding: 9px;	
+	border: 0;
+	border-radius: 0 4px 4px 0;
+	background-color: $lightGrey;
+}
+
+.submit-button__icon {
+	width: 18px;
+	height: 18px;
+}
+
+.header__search-form {
+	padding: 7px 0; 
+}

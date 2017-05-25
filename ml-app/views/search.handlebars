@@ -1,0 +1,29 @@
+<main class="main">
+	<header class="main__header">
+		{{#if breadcrumbs}}
+		{{> breadcrumbs container='main'}}
+		{{/if}}
+	</header>
+	<section class='results'>
+		{{#each data.items}} 
+			<article class='results__product product' itemscope itemtype="http://schema.org/Product">	
+				<figure	class="product__image">
+					<img src="{{picture}}" alt="{{imgAltText}}" itemprop="image">
+					{{#if imgCaption}}
+					<figcaption>{{imgCaption}}</figcaption>
+					{{/if}}
+				</figure>
+				<dl class="product__info">	
+					<dt>Precio</dt>
+					<dd class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+						<span itemprop="price">${{price.amount}}</span>
+						<meta itemprop="priceCurrency" content="ARS" />
+					</dd>
+					<dt>Título</dt>
+					<dd class="product__title" itemprop="name">{{title}}</dd>
+				</div>
+				</div>
+			</article>
+		{{/each}}	
+	</section>
+</main> 

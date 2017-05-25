@@ -1,0 +1,16 @@
+<nav class="breadcrumbs {{#if container}}{{container}}__breadcrumbs{{/if}}" arial-label="breadcrumbs" role="navigation">
+	<ol class="breadcrumbs__list" itemscope itemtype="http://schema.org/BreadCrumbList">
+		{{#each breadcrumbs}}
+		<li class="breadcrumbs__elem" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			{{#if link}}
+			<a class="breadcrumbs__link" itemscope itemtype="http://schema.org/Thing" itemprop="item" href={{link}}>
+				<span class="breadcrumbs__name" itemprop="name">{{name}}</span>
+			</a>
+			{{else}}
+			<span class="breadcrumbs__name" itemtype="http://schema.org/Thing" itemprop="name">{{name}}</span>
+			{{/if}}
+			<meta itemprop="position" content="{{@index}}" />
+		</li>
+		{{/each}}
+	</ol>
+</nav>
