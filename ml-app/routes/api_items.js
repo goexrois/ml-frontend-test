@@ -3,6 +3,8 @@ var router = express.Router()
 var getItems = require('../middleware/get_data')
 
 const itemsQueryPath = 'https://api.mercadolibre.com/sites/MLA/search?q='
+const itemQueryPath = 'https://api.mercadolibre.com/items/'
+const categoriesQueryPath = 'https://api.mercadolibre.com/categories/'
 
 const queryOptions = {
 	queryPath: itemsQueryPath,
@@ -48,10 +50,91 @@ const queryOptions = {
 	}
 }
 
+const itemQueryOptions = {
+	queryPath: itemQueryPath,
+	callback(req,res){
+		return itemQueryPath+req.params.id 
+	},
+	saveData(res,obj){
+		let splittedPrice = obj.price.toString().split('.')
+		let translateCondition = (condition) => { 
+			switch(condition){
+					case "used": return "Usado"
+					case "new": return "Nuevo"
+					case "Not specified by seller": return "No especificado por el vendedor"
+			} 
+		}  
+		res.locals.data = { 
+			author: { 
+				name: 'Gonzalo', 
+				lastname: 'Rodriguez IsleÃo'
+			},
+			item: {
+				id: obj.id, 
+				title: obj.title, 
+				price: { 
+					currency: obj.currency_id,
+					amount: obj.price, 
+					decimals: (splittedPrice.length == 1) ? 0 : splittedPrice[1].length 
+				},
+				picture: obj.pictures[0].url,
+				condition: obj.condition, 
+				free_shipping: obj.shipping.free_shipping,
+				sold_quantity: obj.sold_quantity,
+				description: '',
+				condition: translateCondition(obj.condition),
+				category: obj.category_id,
+				path_from_root: []
+			}
+		}
+	}	
+}
+
+const itemDescriptionQueryOptions = {
+	queryPath: itemQueryPath,
+	callback(req,res){
+		return itemQueryPath+req.params.id+'/description'
+	},
+	saveData(res,obj){
+		res.locals.data.item.description = obj.text;	
+	}
+}
+
+const itemRoutePathQueryOptions = {
+	queryPath: categoriesQueryPath,
+	callback(req,res){
+		return categoriesQueryPath+res.locals.data.item.category
+	},
+	saveData(res,obj){
+		obj.path_from_root.forEach( (currentValue,index) => {
+			res.locals.data.item.path_from_root[index] = 
+				{ 
+					name: currentValue.name, 
+					link: ''
+				}
+		})
+	}
+}
+
+
 router.use(getItems(queryOptions))
+router.use('/:id',getItems(itemQueryOptions))
+router.use('/:id',getItems(itemDescriptionQueryOptions))
+router.use('/:id',getItems(itemRoutePathQueryOptions))
 
 router.get('/', (req,res,next) => {
 		console.log('req en /api/items')
+		console.log('route: ' + JSON.stringify(req.route)) 
+		console.log('params: ' + JSON.stringify(req.params)) 
+		console.log('query: ' + JSON.stringify(req.query)) 
+		console.log('body: ' + JSON.stringify(req.body))	
+		console.log('options: ' + JSON.stringify(queryOptions))
+		console.log(res.locals.data)
+		next()
+})
+
+router.get('/:id', (req,res,next) => {
+		console.log('req en /api/items/:id')
 		console.log('route: ' + JSON.stringify(req.route)) 
 		console.log('params: ' + JSON.stringify(req.params)) 
 		console.log('query: ' + JSON.stringify(req.query)) 

@@ -2,9 +2,7 @@ var express = require('express')
 var exphbs = require('express-handlebars')
 var home = require('./routes/frontpage') 
 var items = require('./routes/items') 
-var item = require('./routes/item')
 var apiItems = require('./routes/api_items') 
-var apiItem = require('./routes/api_item') 
 
 var app = express()
 
@@ -15,9 +13,7 @@ app.use(express.static('public'))
 
 app.use('/',home)
 app.use('/items',items)
-app.use('/items',item)
 app.use('/api/items',apiItems)
-app.use('/api/items',apiItem)
 
 app.listen(3000, function(){
 	console.log('sv is up and listening')
