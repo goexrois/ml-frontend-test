@@ -2,13 +2,7 @@ var https = require('https')
 
 module.exports = function (options){
 	return function (req,res,next){
-	console.log('req en getdata')
-		console.log('route: ' + JSON.stringify(req.route)) 
-		console.log('params: ' + JSON.stringify(req.params)) 
-		console.log('query: ' + JSON.stringify(req.query)) 
-		console.log('body: ' + JSON.stringify(req.body))
-
-
+		// Request for ML API 
 		https.get(options.callback(req,res),(apiResponse) => {
 			const { statusCode } = apiResponse
 			const contentType = apiResponse.headers['content-type']
@@ -23,7 +17,7 @@ module.exports = function (options){
 			}
 			if (error) {
 				console.error(error.message)
-				// consume response data to free up memory
+				// Consume response data to free up memory
 				apiResponse.resume()
 				return
 			}
@@ -34,7 +28,7 @@ module.exports = function (options){
 			apiResponse.on('end', () => {
 				try {
 					const parsedData = JSON.parse(rawData)
-					console.log(parsedData)
+					// Save data in options object
 					options.saveData(res,parsedData) 
 					next()
 				} catch (e) {
@@ -44,6 +38,5 @@ module.exports = function (options){
 		}).on('error', (e) => {
 			console.error(`Got error: ${e.message}`)
 		})
-		//next()	
 	}
 }

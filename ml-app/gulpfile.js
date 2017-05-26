@@ -1,3 +1,4 @@
+var del = require('del') 
 var gulp = require('gulp') 
 var sass = require('gulp-sass')
 var uglify = require('gulp-uglify') 
@@ -8,7 +9,6 @@ var cssnano = require('gulp-cssnano')
 var autoprefixer = require('autoprefixer')
 var postcss = require('gulp-postcss')
 var runSequence = require('run-sequence')
-var del = require('del') 
 
 gulp.task('clean:public', () => {
 	return del.sync('public')

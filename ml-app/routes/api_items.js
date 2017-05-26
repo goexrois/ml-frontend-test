@@ -2,10 +2,15 @@ var express = require('express')
 var router = express.Router() 
 var getItems = require('../middleware/get_data')
 
+// Definition of ML API endpoints
 const itemsQueryPath = 'https://api.mercadolibre.com/sites/MLA/search?q='
 const itemQueryPath = 'https://api.mercadolibre.com/items/'
 const categoriesQueryPath = 'https://api.mercadolibre.com/categories/'
 
+// options object: 
+// @field queryPath - Defines the url that is going to be requested
+// @field callback - Function for retrieving the full url for the request
+// @field saveData - Function that saves the specified data on res.locals.data
 const queryOptions = {
 	queryPath: itemsQueryPath,
 	limit: 4,
@@ -117,30 +122,17 @@ const itemRoutePathQueryOptions = {
 }
 
 
+// Calls to middleware function which retrieves data.
 router.use(getItems(queryOptions))
 router.use('/:id',getItems(itemQueryOptions))
 router.use('/:id',getItems(itemDescriptionQueryOptions))
 router.use('/:id',getItems(itemRoutePathQueryOptions))
 
 router.get('/', (req,res,next) => {
-		console.log('req en /api/items')
-		console.log('route: ' + JSON.stringify(req.route)) 
-		console.log('params: ' + JSON.stringify(req.params)) 
-		console.log('query: ' + JSON.stringify(req.query)) 
-		console.log('body: ' + JSON.stringify(req.body))	
-		console.log('options: ' + JSON.stringify(queryOptions))
-		console.log(res.locals.data)
 		next()
 })
 
 router.get('/:id', (req,res,next) => {
-		console.log('req en /api/items/:id')
-		console.log('route: ' + JSON.stringify(req.route)) 
-		console.log('params: ' + JSON.stringify(req.params)) 
-		console.log('query: ' + JSON.stringify(req.query)) 
-		console.log('body: ' + JSON.stringify(req.body))	
-		console.log('options: ' + JSON.stringify(queryOptions))
-		console.log(res.locals.data)
 		next()
 })
 

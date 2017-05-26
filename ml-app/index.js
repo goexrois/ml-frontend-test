@@ -7,11 +7,14 @@ var error = require('./routes/error')
 
 var app = express()
 
+// Defines template engine
 app.engine('handlebars', exphbs({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
 
+// Grants access to static files
 app.use(express.static('public')) 
 
+// Register middleware
 app.use('/',home)
 app.use('/items',items)
 app.use('/api/items',apiItems)
@@ -29,6 +32,7 @@ app.use( (req,res,next) => {
 	}) 
 })
 
+// Starts server
 app.listen(3000, function(){
 	console.log('sv is up and listening')
 })
