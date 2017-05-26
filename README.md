@@ -21,7 +21,7 @@ on your project root folder and you're good to go.
 
 ### Installing
 
-Wether you're on a Vagrant VM or in your pc you must do this the following steps to install the app:
+Whether you're on a Vagrant VM or in your pc you must do this the following steps to install the app:
 
 ```
 $ cd project_root_folder/ml-app
@@ -35,10 +35,20 @@ $ gulp build
 ```
 This step will generate all the static files that the app uses. 
 
-## To do
+## Run the app
 
+To run the app just run: 
 
+```
+$ cd project_root_folder/ml-app
+$ node index.js
+```
 
+And then access by the browser to: 
+
+```
+http://localhost:3000
+```
 ## Built With
 
 * [Vagrant](https://www.vagrantup.com/) - Development environment generator.
