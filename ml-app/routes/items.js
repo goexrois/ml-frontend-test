@@ -46,7 +46,7 @@ router.get('/', (req,res,next) => {
 		{ name: query,		link: ''	}
 	]
 			res.render(
-				'search',
+				'items',
 				{ title: `${query} en MercadoLibre`, 
 					iconImgPath: `${req.path}images/ic_Search.png`,
 					placeholder: ``,

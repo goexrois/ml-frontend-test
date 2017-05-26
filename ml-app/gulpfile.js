@@ -1,7 +1,6 @@
 var gulp = require('gulp') 
 var sass = require('gulp-sass')
 var uglify = require('gulp-uglify') 
-var gulpIf = require('gulp-if') 
 var cache = require('gulp-cache') 
 var concat = require('gulp-concat') 
 var imagemin = require('gulp-imagemin')
@@ -10,28 +9,26 @@ var autoprefixer = require('autoprefixer')
 var postcss = require('gulp-postcss')
 var runSequence = require('run-sequence')
 var del = require('del') 
-var browserSync = require('browser-sync').create() 
 
-/*gulp.task('browserSync', () => {
-	browserSync.init({
-		server: {
-			baseDir: './'
-		}
-	})
-})
-*/	
 gulp.task('clean:public', () => {
 	return del.sync('public')
 })
 
-
-
 gulp.task('sass', () => {
-	return gulp.src('dev/sass/**/*.scss')
+	return gulp.src('dev/sass/blocks/*.scss')
 		.pipe(sass().on('error', sass.logError)) 
 		.pipe(concat('styles.css'))
 		.pipe(gulp.dest('./public/css'))
-		//.pipe(browserSync.reload({ stream: true}))
+})
+
+gulp.task('css', () => {
+	let plugins = [
+		autoprefixer({browsers: ['last 2 versions']}),
+		cssnano
+	]
+	return gulp.src('public/css/styles.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('public/css'))
 })
 
 gulp.task('images', () => {
@@ -40,15 +37,13 @@ gulp.task('images', () => {
 		.pipe(gulp.dest('public/images'))
 })
 
-gulp.task('watch', [/*'browserSync',*/ 'sass'], () => {
-	gulp.watch('dev/sass/**/*.scss',['sass'])
-	//gulp.watch('**/*.js', browserSync.reload)
-	//gulp.watch('**/*.handlebars', browserSync.reload)
+gulp.task('watch', ['sass'], () => {
+	gulp.watch('dev/sass/*.scss','sass')
 })
 
 gulp.task('default', (callback) => {
 	runSequence(
-		['sass'/*,'browserSync'*/,'watch'],
+		['sass','watch'],
 		callback
 	)
 })
@@ -57,6 +52,7 @@ gulp.task('build', (callback) => {
 	runSequence(
 		'clean:public',
 		'sass',
+		'css',
 		'images',
 		callback
 	) 	
