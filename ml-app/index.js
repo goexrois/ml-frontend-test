@@ -3,7 +3,6 @@ var exphbs = require('express-handlebars')
 var home = require('./routes/frontpage') 
 var items = require('./routes/items') 
 var apiItems = require('./routes/api_items') 
-var error = require('./routes/error')
 
 var app = express()
 
