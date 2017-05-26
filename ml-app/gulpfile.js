@@ -7,6 +7,7 @@ var imagemin = require('gulp-imagemin')
 var cssnano = require('gulp-cssnano')
 var autoprefixer = require('autoprefixer')
 var postcss = require('gulp-postcss')
+var babel = require('gulp-babel')
 var runSequence = require('run-sequence')
 var del = require('del') 
 
@@ -31,14 +32,23 @@ gulp.task('css', () => {
 		.pipe(gulp.dest('public/css'))
 })
 
+gulp.task('js', () => {
+	return gulp.src('dev/js/*.js')
+		.pipe(concat('script.js'))
+		//.pipe(babel({ presets: ['es2015'] }))
+		//.pipe(uglify())
+		.pipe(gulp.dest('public/js'))
+})
+
 gulp.task('images', () => {
 	return gulp.src('dev/images/**/*.+(png|jpg|jpeg)')
 		.pipe(cache(imagemin()))
 		.pipe(gulp.dest('public/images'))
 })
 
-gulp.task('watch', ['sass'], () => {
+gulp.task('watch', ['sass','js'], () => {
 	gulp.watch('dev/sass/blocks/*.scss',['sass'])
+	gulp.watch('dev/js/*.js',['js'])
 })
 
 gulp.task('default', (callback) => {

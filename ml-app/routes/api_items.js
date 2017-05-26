@@ -66,7 +66,7 @@ const itemQueryOptions = {
 		}  
 		res.locals.data = { 
 			author: { 
-				name: 'Gonzalo', 
+				name: 'Gonzalo Exequiel', 
 				lastname: 'Rodriguez IsleÃo'
 			},
 			item: {
@@ -123,25 +123,40 @@ router.use('/:id',getItems(itemDescriptionQueryOptions))
 router.use('/:id',getItems(itemRoutePathQueryOptions))
 
 router.get('/', (req,res,next) => {
-		console.log('req en /api/items')
-		console.log('route: ' + JSON.stringify(req.route)) 
-		console.log('params: ' + JSON.stringify(req.params)) 
-		console.log('query: ' + JSON.stringify(req.query)) 
-		console.log('body: ' + JSON.stringify(req.body))	
-		console.log('options: ' + JSON.stringify(queryOptions))
-		console.log(res.locals.data)
-		next()
+	res.set('Content-type', 'text/html')
+	let query = req.query.q
+	let breadcrumbs = [
+		{	name: 'Inicio', link: '/'	},	
+		{ name: query,		link: ''	}
+	]
+	res.render(
+		'items',
+		{ 
+			title: `${query} en MercadoLibre`, 
+			iconImgPath: `${req.path}images/ic_Search.png`,
+			placeholder: ``,
+			value: `${query}`,
+			data: res.locals.data,
+			breadcrumbs: breadcrumbs,
+			renderSearchForm : res.locals.renderSearchForm
+		}
+	)
 })
 
 router.get('/:id', (req,res,next) => {
-		console.log('req en /api/items/:id')
-		console.log('route: ' + JSON.stringify(req.route)) 
-		console.log('params: ' + JSON.stringify(req.params)) 
-		console.log('query: ' + JSON.stringify(req.query)) 
-		console.log('body: ' + JSON.stringify(req.body))	
-		console.log('options: ' + JSON.stringify(queryOptions))
-		console.log(res.locals.data)
-		next()
+	res.set('Content-type', 'text/html')
+	res.render(
+		'item',
+		{ 
+			title: res.locals.data.title, 
+			iconImgPath: `/images/ic_Search.png`,
+			placeholder: `Nunca dejes de buscar`,
+			value: ``,
+			product: res.locals.data.item,
+			breadcrumbs: res.locals.data.item.path_from_root,
+			renderSearchForm : res.locals.renderSearchForm
+		}
+	)
 })
 
 module.exports = router
