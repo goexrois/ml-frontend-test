@@ -1,8 +1,8 @@
 <main class="main">
 	<header class="main__header">
-		{{#if data.items}}
+		{{#if breadcrumbs}}
 		{{> breadcrumbs container='main'}}
 		{{/if}}
 	</header>
-	{{> product_list container='main' products=data.items}}
-</main> 
+	{{> item container='main'}}
+</main>

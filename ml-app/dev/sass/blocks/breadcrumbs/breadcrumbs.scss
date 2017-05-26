@@ -3,6 +3,7 @@
 .breadcrumbs{
 	width: 100%; 
 	height: auto;
+	padding: 16px 0;
 }
 
 .breadcrumbs__list{
@@ -28,7 +29,7 @@
 .breadcrumbs__elem:not(:last-child) .breadcrumbs__name:after{
 	content:">";
 	display:inline-block;
-	padding: 0 7.5px;
+	padding: 0 5px;
 	position: relative; 
 	top: 1px;
 	font-size: 14px;

@@ -1,0 +1,6 @@
+@mixin hide(){
+	position: absolute; 
+	left: -5000px; 
+	opacity: 0;
+	visibility: hidden;
+}

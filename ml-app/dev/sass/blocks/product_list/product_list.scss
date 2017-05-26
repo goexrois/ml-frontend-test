@@ -1,0 +1,96 @@
+@import "../base";
+@import "../mixins";
+
+.product-list {
+	background-color: white; 
+	border-radius: 4px;
+	padding: 16px;
+	
+	&__item:not(:last-child):after{
+		content: "";
+		display: inline-block;
+		width: 100%; 
+		height: auto;
+		padding-bottom:	16px; 
+		margin: 0 8px 16px 8px;
+		border-bottom: 2px solid $lightGrey;		
+	}
+	
+}
+
+.product--list-view {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: relative;
+	
+	& figure {
+		display: inline-block;
+		width: 180px;
+		height: 180px;
+		padding-right: 16px;
+ 		border-radius: 4px;
+		margin: 0;
+	}
+
+	& dt {
+		@include hide();		
+	}
+	
+	& dd {
+		margin-left: 0;
+	}
+
+	&__image {
+		padding: 45px;
+	}
+	
+	&__info {
+		display: inline-block;
+		margin: 0;
+	}
+	
+	&__price {
+		display: inline-block;
+		padding-top: 32px;
+		margin-bottom: 32px;
+		font-family: $default-font-stack; 
+		font-size: 24px; 
+		color: $black;
+	}
+
+	&__free-shipping {
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		position: relative; 
+		bottom: 4px ;
+		left: 9px;
+		background-image: url(/images/ic_shipping.png);
+		text-indent: -9999px;
+	}
+
+	&__address {
+		position: absolute; 
+		top: 38px;
+		right: 80px;
+		font-family: $default-font-stack; 
+		font-size: 12px;
+		color: $darkGrey;
+	}
+
+	&__title {
+		width: 440px;
+		margin: 0;
+		font-family: $default-font-stack;
+		font-size: 18px;
+		font-weight: 100;
+	}
+
+	&__title a {
+		text-decoration: none;
+		color: $black;
+	}
+
+}

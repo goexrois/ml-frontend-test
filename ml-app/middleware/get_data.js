@@ -2,14 +2,14 @@ var https = require('https')
 
 module.exports = function (options){
 	return function (req,res,next){
-		console.log('req en getdata')
+	console.log('req en getdata')
 		console.log('route: ' + JSON.stringify(req.route)) 
 		console.log('params: ' + JSON.stringify(req.params)) 
 		console.log('query: ' + JSON.stringify(req.query)) 
 		console.log('body: ' + JSON.stringify(req.body))
-		console.log(res.locals.data)
 
-			https.get(options.callback(req),(apiResponse) => {
+
+		https.get(options.callback(req,res),(apiResponse) => {
 			const { statusCode } = apiResponse
 			const contentType = apiResponse.headers['content-type']
 
@@ -34,7 +34,9 @@ module.exports = function (options){
 			apiResponse.on('end', () => {
 				try {
 					const parsedData = JSON.parse(rawData)
-					res.locals.data = options.prepareData(parsedData) 
+					console.log(parsedData)
+					options.saveData(res,parsedData) 
+					next()
 				} catch (e) {
 					console.error(e.message)
 				}
@@ -42,6 +44,6 @@ module.exports = function (options){
 		}).on('error', (e) => {
 			console.error(`Got error: ${e.message}`)
 		})
-		next()	
+		//next()	
 	}
 }

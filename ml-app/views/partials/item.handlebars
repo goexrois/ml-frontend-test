@@ -1,0 +1,34 @@
+				<article itemscope itemtype="http://schema.org/Product" class="product">	
+					<figure>
+						<a itemprop="url" href="/items/{{product.id}}" >
+							<img itemprop="image" src="{{product.picture}}" alt="{{product.imgAltText}}" class="product__image"/>
+						</a>
+						{{#if imgCaption}}
+						<figcaption class="product__image-caption">{{product.imgCaption}}</figcaption>
+						{{/if}}
+					</figure>
+					<dl class="product__info">	
+						<dt>Condición del producto</dt>
+						<dd itemprop="itemCondition" class="product__condition">{{product.condition}}</dd>
+						<dt>Cantidad de productos vendidos</dt>
+						<dd class="product__sold-quantity"> - {{product.sold_quantity}} vendidos</dd>
+						<dt>Título</dt>
+						<dd>
+							<h3 class="product__title">
+								<a itemprop="url" href="/items/{{product.id}}">
+									<span itemprop="name">{{product.title}}</span>	
+								</a>
+							</h3>
+						</dd>
+						<dt>Precio</dt>
+						<dd  itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__price">
+							$ <span itemprop="price">{{product.price.amount}}</span>
+							<meta itemprop="priceCurrency" content="ARS" />
+						</dd>
+						{{#if free_shipping}} 
+						<dt>Envío gratuito</dt>
+						<dd class="product__free-shipping">Sí</dd>
+						{{/if}}
+						<dt>Ubicación</dt>
+						<dd class="product__address">{{product.address.state_name}}</dd>
+					</article>

@@ -3,8 +3,10 @@
 .main{
 	width: $desktopWidth; 
 	margin: 0 auto;
-}
 
-.main__header{	
-	padding: 16px 0;	
+	&__header{	
+	}
+
+	&__product-list{
+	}
 }

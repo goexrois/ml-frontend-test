@@ -1,0 +1,40 @@
+	<section class='{{#if container}}{{container}}__product-list{{/if}} product-list'>
+		{{#if products}} 
+			{{#each products}} 
+				<article 	itemprop="itemListElement" itemscope itemtype="http://schema.org/Product" 
+									class='product-list__item product--list-view'>	
+					<figure>
+						<a itemprop="url" href="/items/{{id}}" >
+							<img itemprop="image" src="{{picture}}" alt="{{imgAltText}}" class="product--list-view__image"/>
+						</a>
+						{{#if imgCaption}}
+						<figcaption class="product--list-view__image-caption">{{imgCaption}}</figcaption>
+						{{/if}}
+					</figure>
+					<dl class="product--list-view__info">	
+						<dt>Precio</dt>
+						<dd  itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product--list-view__price">
+							$ <span itemprop="price">{{price.amount}}</span>
+							<meta itemprop="priceCurrency" content="ARS" />
+						</dd>
+						{{#if free_shipping}} 
+						<dt>Envío gratuito</dt>
+						<dd class="product--list-view__free-shipping">Sí</dd>
+						{{/if}}
+						<dt>Ubicación</dt>
+						<dd class="product--list-view__address">{{address.state_name}}</dd>
+						<dt>Título</dt>
+						<dd>
+							<h3 class="product--list-view__title">
+								<a itemprop="url" href="/items/{{id}}">
+									<span itemprop="name">{{title}}</span>	
+								</a>
+							</h3>
+						</dd>
+				</article>
+			{{/each}}	
+		{{else}}
+			<h3>No hay publicaciones que coincidan con tu búsqueda</h3>
+		{{/if}}
+	</section>
+
