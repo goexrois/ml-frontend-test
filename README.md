@@ -56,8 +56,13 @@ This step will generate all the static files that the app uses.
 
 This project has no license.
 
-## Acknowledgments
+## Websites used as reference
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* [schema.org](https://schema.org)
+* [W3C](https://www.w3.org/)
+* [W3 School](https://www.w3schools.com/)
+* [Google Dev](https://developers.google.com/)
+* [Stack Overflow](https://stackoverflow.com/)
+* [node.js](https://nodejs.org/)
+* [express.js](http://expressjs.com/)
+* [gulp](http://gulpjs.com/)
