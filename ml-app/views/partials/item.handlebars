@@ -1,9 +1,6 @@
 				<article itemscope itemtype="http://schema.org/Product" class="product">	
 					<figure>
-						<img itemprop="image" src="{{product.picture}}" alt="{{product.imgAltText}}" class="product__image"/>
-						{{#if imgCaption}}
-						<figcaption class="product__image-caption">{{product.imgCaption}}</figcaption>
-						{{/if}}
+						<img itemprop="image" src="{{product.picture}}" alt="{{product.title}}" class="product__image"/>
 					</figure>
 					<div class="container">
 						<dl class="product__info">	
