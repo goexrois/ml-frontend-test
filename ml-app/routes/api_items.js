@@ -58,7 +58,6 @@ router.get('/', (req,res,next) => {
 		console.log('body: ' + JSON.stringify(req.body))	
 		console.log('options: ' + JSON.stringify(queryOptions))
 		console.log(res.locals.data)
-		
 		next()
 })
 

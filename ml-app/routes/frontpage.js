@@ -10,7 +10,7 @@ router.get('/', (req,res) => {
 
 	res.render(
 		'home',
-		{ title: `${req.query.search} en MercadoLibre`, 
+		{ title: `MercadoLibre`, 
 			iconImgPath: `${req.path}images/ic_Search.png`,
 			placeholder: `Nunca dejes de buscar`,
 			value: `` 
