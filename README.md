@@ -64,6 +64,24 @@ And then access to:
 ```
 http://localhost:3000
 ```
+## TO DO 
+
+* Tests for backend (API connection).
+* Responsive design.
+* High definition images for high resolution displays.
+* Sprite for static images to reduce size. 
+* Compatibility with legacy browsers. Tested on latest versions of Mozilla, Safari and Chrome.
+* Improve build.
+* React approach to solve the problem.
+
+## Considerations
+
+* I made one more request to get the breadcrumbs data, that wasn't present in the model but it was in the view.
+* As it was not specified, the free shipping icon was not included in the product detail view. 
+* I did not put the schema.org/Product description property because the majority of the items provided
+had no plain text as description. 
+* The favicon is missing because it was not provided.
+
 ## Built With
 
 * [Vagrant](https://www.vagrantup.com/) - Development environment generator.
