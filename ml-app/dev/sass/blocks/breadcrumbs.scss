@@ -1,0 +1,44 @@
+@import "base";
+
+.breadcrumbs{
+	width: 100%; 
+	height: auto;
+	padding: 16px 0;
+
+	&__list{
+		list-style: none;	
+		margin: 0;
+		padding: 0;
+	}
+
+	&__elem{
+		display:inline-block;
+	}
+
+	&__link{
+		text-decoration: none;
+	}
+
+	&__name{
+		font-family: $default-font-stack; 
+		font-size: 14px;
+		color: $grey;
+	}
+
+	&__elem:not(:last-child) &__name:after{
+		content:">";
+		display:inline-block;
+		padding: 0 5px;
+		position: relative; 
+		top: 1px;
+		font-size: 14px;
+		color: $grey; 
+	}
+
+	&__elem:last-child &__name{
+		color: $darkGrey;
+		font-weight: bold;
+	}
+}
+
+

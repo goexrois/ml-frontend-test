@@ -38,7 +38,7 @@ gulp.task('images', () => {
 })
 
 gulp.task('watch', ['sass'], () => {
-	gulp.watch('dev/sass/*.scss','sass')
+	gulp.watch('dev/sass/blocks/*.scss',['sass'])
 })
 
 gulp.task('default', (callback) => {
