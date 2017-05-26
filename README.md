@@ -12,28 +12,43 @@ So if you still want to run the project on vagrant see this [link](https://www.v
 Once installed run:
 
 ```
-$ git clone https://github.com/goexrois/ml-frontend-test
 $ vagrant up 
 ```
 
 on your project root folder and you're good to go. 
 
+You also must have git installed, if not you can check this [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ### Installing
 
 Whether you're on a Vagrant VM or in your pc you must do this the following steps to install the app:
 
+1. Clone the repo:
+```
+$ git clone https://github.com/goexrois/ml-frontend-test
+```
+2. Go to the app root folder and install the app.
+
 ```
 $ cd project_root_folder/ml-app
-$ npm init
+$ npm install
 ```
-This step will install all the dependencies used by the app. 
+3. Generate statics files
 
-Then run:
 ```
 $ gulp build 
 ```
-This step will generate all the static files that the app uses. 
+## Different approaches for the app
+As the problem could be solved in more than way, I opted for two solutions: 
+
+1. Server side manipulation of data. In this approach, all the API requests are solved in the backend, thus the client
+does not have to run any script. This may be a good solution for no-javascript browsers.
+
+To run this solution run the app in the `master` branch.
+
+2. Client side requests for data. In this approach, the client sends AJAX requests to get the data from the implemented endpoints. This may be a good solution to leverage server load.
+
+To run this solution run the app in the `ajax-approach` branch.
 
 ## Run the app
 
@@ -44,7 +59,7 @@ $ cd project_root_folder/ml-app
 $ node index.js
 ```
 
-And then access by the browser to: 
+And then access to: 
 
 ```
 http://localhost:3000
@@ -57,14 +72,11 @@ http://localhost:3000
 * [node.js](https://nodejs.org/) - JavaScript runtime used for developing the app.
 * [express.js](http://expressjs.com/) - Framework for nodejs for web apps development.
 * [handlebars](http://handlebarsjs.com/) - Template engine.
+* [BEM](https://en.bem.info/) - Arquitectura de componentes para desarrollo escalable y mantenible.
 
 ## Author
 
 * **Gonzalo Exequiel Rodriguez Isleño** - *Initial work* - [goexrois](https://github.com/goexrois)
-
-## License
-
-This project has no license.
 
 ## Websites used as reference
 
@@ -76,3 +88,6 @@ This project has no license.
 * [node.js](https://nodejs.org/)
 * [express.js](http://expressjs.com/)
 * [gulp](http://gulpjs.com/)
+* [CSS-TRICKS](https://css-tricks.com/)
+* [BEM](https://en.bem.info/) - Arquitectura de componentes para desarrollo escalable y mantenible.
+* [handlebars](http://handlebarsjs.com/) - Template engine.
