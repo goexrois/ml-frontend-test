@@ -1,5 +1,5 @@
+	{{#if products}} 
 	<section class='{{#if container}}{{container}}__product-list{{/if}} product-list'>
-		{{#if products}} 
 			{{#each products}} 
 				<article 	itemprop="itemListElement" itemscope itemtype="http://schema.org/Product" 
 									class='product-list__item product--list-view'>	
@@ -34,8 +34,9 @@
 					</dl>
 				</article>
 			{{/each}}	
+		</section>
 		{{else}}
-			<h3>No hay publicaciones que coincidan con tu búsqueda</h3>
+			<h3 class="error" >No hay publicaciones que coincidan con tu búsqueda</h3>
 		{{/if}}
-	</section>
+
 
