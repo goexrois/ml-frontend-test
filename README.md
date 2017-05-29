@@ -7,8 +7,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-This project has a Vagrantfile for the ones who want to run the project on the VM i developed it. If you don't want to use vagrant for running the project you can skip this steps. 
-So if you still want to run the project on vagrant see this [link](https://www.vagrantup.com/docs/installation/) for instructions on how to install vagrant on your pc. 
+This project has a Vagrantfile for the ones who want to run the project on the VM i developed for it. If you don't want to use vagrant for running the project you can skip this steps. 
+To install Vagrant see this [link](https://www.vagrantup.com/docs/installation/) for instructions.
 Once installed run:
 
 ```
@@ -17,7 +17,7 @@ $ vagrant up
 
 on your project root folder and you're good to go. 
 
-You also must have git installed, if not you can check this [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+You also must have git installed, if you don't, check this [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ### Installing
 
@@ -33,7 +33,7 @@ $ git clone https://github.com/goexrois/ml-frontend-test
 $ cd project_root_folder/ml-app
 $ npm install
 ```
-3. Generate statics files
+3. Generate static files (CSS/JS/images)
 
 ```
 $ gulp build 
@@ -50,14 +50,14 @@ To run this solution run the app in the `ajax-approach` branch.
 
 ## Run the app
 
-To run the app just run: 
+To run the app do: 
 
 ```
 $ cd project_root_folder/ml-app
 $ node index.js
 ```
 
-And then access to: 
+And then access to (Chrome/Mozilla/Safari): 
 
 ```
 http://localhost:3000
@@ -67,16 +67,16 @@ http://localhost:3000
 * Tests for backend (API connection).
 * Responsive design.
 * High definition images for high resolution displays.
-* Sprite for static images to reduce size. 
-* Compatibility with legacy browsers. Tested on latest versions of Mozilla, Safari and Chrome.
+* Static images sprite to reduce size. 
+* Compatibility with legacy browsers. Tested on latest versions of Mozilla, Safari and Chrome and worked correctly.
 * Improve build.
 * React approach to solve the problem.
 
 ## Considerations
 
-* I made one more request to get the breadcrumbs data, that wasn't present in the model but it was in the view.
+* I made one more request to get the breadcrumbs data, that wasn't present in the model requested but it was in the specification of the view.
 * As it was not specified, the free shipping icon was not included in the product detail view. 
-* I did not put the schema.org/Product description property because the majority of the items provided
+* I did not add the schema.org/Product description property because the majority of the items provided
 had no plain text as description. 
 * The favicon is missing because it was not provided.
 * Added one error page for error 404. 
@@ -87,7 +87,7 @@ had no plain text as description.
 * [gulp](http://gulpjs.com/) - Task builder.
 * [sass](http://sass-lang.com/) - Used to generate CSS.
 * [node.js](https://nodejs.org/) - JavaScript runtime used for developing the app.
-* [express.js](http://expressjs.com/) - Framework for nodejs for web apps development.
+* [express.js](http://expressjs.com/) - Framework for nodejs for web app development.
 * [handlebars](http://handlebarsjs.com/) - Template engine.
 * [BEM](https://en.bem.info/) - Coding architecture to achieve scalability and mantainability.
 
