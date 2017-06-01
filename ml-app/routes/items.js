@@ -16,10 +16,6 @@ router.use('/', apiItems)
 
 // Render /items/:id view
 router.get('/:id', (req,res,next) => {
-	let breadcrumbs = [
-		{	name: 'Inicio', link: '/'	},	
-		{ name: 'algo',		link: ''	}
-	]
 	res.render(
 		'item',
 		{ title: res.locals.data.title, 
