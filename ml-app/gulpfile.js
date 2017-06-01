@@ -53,7 +53,7 @@ gulp.task('watch', ['sass','js'], () => {
 
 gulp.task('default', (callback) => {
 	runSequence(
-		['sass','watch'],
+		['sass','js','watch'],
 		callback
 	)
 })
@@ -63,6 +63,7 @@ gulp.task('build', (callback) => {
 		'clean:public',
 		'sass',
 		'css',
+		'js',
 		'images',
 		callback
 	) 	
