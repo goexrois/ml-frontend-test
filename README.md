@@ -17,7 +17,11 @@ $ vagrant up
 
 on your project root folder and you're good to go. 
 
-You also must have git installed, if you don't, check this [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+If you're using the Vagrant VM the following are already installed:
+
+You must have git installed, if you don't, check this [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+And you must have installed nodejs and npm, to do this check this [link].(https://docs.npmjs.com/getting-started/installing-node)
+
 
 ### Installing
 
